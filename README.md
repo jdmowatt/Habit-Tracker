@@ -63,11 +63,43 @@ Tests run against a separate temporary database and do not affect your real data
 | GET | `/habits/{habit_id}/completions` | List all completions for a habit |
 | GET | `/habits/{habit_id}/streak` | Get the current streak for a habit |
 
+### Example: Create a habit
+ 
+**Request**
+```
+POST /habits
+{
+  "name": "Drink water"
+}
+```
+ 
+**Response**
+```
+{
+  "id": 1,
+  "name": "Drink water",
+  "created_at": "2026-09-11T14:32:00Z"
+}
+```
+ 
+### Example: Log a completion
+ 
+**Request**
+```
+POST /habits/1/complete
+{
+  "completed_date": "2026-09-11"
+}
+```
+ 
+`completed_date` is optional — if omitted, it defaults to today.
+
 ## Design Notes
  
 - Timestamps are stored in UTC to avoid timezone inconsistencies.
 - Streak calculation anchors on today or yesterday, so a streak isn't broken just because today hasn't been logged yet.
 - Request/response schemas are kept separate from database models so clients can't set server-controlled fields (like `id` or `created_at`) directly.
+
 ## Possible Future Improvements
  
 - Update endpoint for renaming habits (currently supports Create/Read/Delete, not Update)
