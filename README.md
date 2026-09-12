@@ -43,6 +43,26 @@ A REST API for tracking daily habits and streaks, built with FastAPI and SQLAlch
  
 5. Open your browser to `http://127.0.0.1:8000/docs` for interactive API documentation.
 
+## Running Tests
+ 
+```
+pytest -v
+```
+ 
+Tests run against a separate temporary database and do not affect your real data.
+ 
+## API Endpoints
+ 
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/habits` | Create a new habit |
+| GET | `/habits` | List all habits |
+| GET | `/habits/{habit_id}` | Get a single habit |
+| DELETE | `/habits/{habit_id}` | Delete a habit |
+| POST | `/habits/{habit_id}/complete` | Log a completion for a habit |
+| GET | `/habits/{habit_id}/completions` | List all completions for a habit |
+| GET | `/habits/{habit_id}/streak` | Get the current streak for a habit |
+
 ## Design Notes
  
 - Timestamps are stored in UTC to avoid timezone inconsistencies.
