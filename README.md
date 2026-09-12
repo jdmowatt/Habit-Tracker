@@ -78,7 +78,7 @@ POST /habits
 {
   "id": 1,
   "name": "Drink water",
-  "created_at": "2026-09-11T14:32:00Z"
+  "created_at": "2026-09-12T00:27:37.098515"
 }
 ```
  
